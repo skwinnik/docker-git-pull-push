@@ -75,6 +75,7 @@ while true; do
 	if [ ! -z "${CHANGES_FOUND}" ]; then
 		echo "Changes detected."
 		git commit -m "Update detected changes."
+		git pull --rebase
 		git push ${GIT_ORIGIN} ${GIT_BRANCH}
 	fi
 done
