@@ -8,7 +8,6 @@ set -e -x
 [ -z "${COMMIT_USER}" ] && { echo "Need to set COMMIT_USER"; exit 1; }
 [ -z "${COMMIT_EMAIL}" ] && { echo "Need to set COMMIT_EMAIL"; exit 1; }
 [ -z "${WORKING_DIR}" ] && { echo "Need to set WORKING_DIR"; exit 1; }
-[ -z "${SSH_PATH}" ] && { echo "Need to set SSH_PATH"; exit 1; }
 [ -z "${FILES_TO_COMMIT}" ] && { echo "Need to set FILES_TO_COMMIT"; exit 1; }
 [ -z "${SLEEP_INTERVAL}" ] && { echo "Need to set SLEEP_INTERVAL"; exit 1; }
 
@@ -19,7 +18,7 @@ cd ${WORKING_DIR}
 if [ ! -d ~/.ssh ]; then
 	echo "SSH Key was not found. Configuring SSH Key."
 	mkdir ~/.ssh
-	cat ${SSH_PATH} > ~/.ssh/id_rsa
+	cat /ssh/id_rsa > ~/.ssh/id_rsa
 	chmod 700 ~/.ssh
 	chmod 600 ~/.ssh/id_rsa
 
