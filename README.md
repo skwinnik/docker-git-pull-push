@@ -18,8 +18,8 @@ docker run --name git-push -d  \
     -e COMMIT_USER="Git Service" \
     -e COMMIT_EMAIL="git@example.com" \
     -e WORKING_DIR="/git" \
-    -e SSH_KEY="<private key>" \
     -e FILES_TO_COMMIT="." \
     -e SLEEP_INTERVAL="600" \
-    -v /path/to/git/repo:/git git-push:latest
+    -v /path/to/git/repo:/git \
+    -v /path/to/ssh:/ssh git-push:latest
 ```
