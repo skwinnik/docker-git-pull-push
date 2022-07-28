@@ -42,7 +42,9 @@ git config user.email "${COMMIT_EMAIL}"
 
 # Loop forever and push new changes at the given interval
 while true; do
-
+	# Sleep for the given interval.
+	sleep ${SLEEP_INTERVAL}
+	
 	# Reset our variable for checking whether or not changes were found.
 	CHANGES_FOUND=""
 
@@ -50,6 +52,9 @@ while true; do
 	CHANGES=`git status -s | awk {'print $2'}`
 	if [ -z "${CHANGES}" ]; then
 		echo "No changes detected."
+		
+		#safely pull if no changes
+		git pull --rebase
 		continue
 	fi
 
@@ -73,11 +78,9 @@ while true; do
 	if [ ! -z "${CHANGES_FOUND}" ]; then
 		echo "Changes detected."
 		git commit -m "Update detected changes."
+		
+		#pull after commit
 		git pull --rebase
 		git push ${GIT_ORIGIN} ${GIT_BRANCH}
 	fi
-	git pull --rebase
-	
-	# Sleep for the given interval.
-	sleep ${SLEEP_INTERVAL}
 done
