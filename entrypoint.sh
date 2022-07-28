@@ -42,8 +42,6 @@ git config user.email "${COMMIT_EMAIL}"
 
 # Loop forever and push new changes at the given interval
 while true; do
-	# Sleep for the given interval.
-	sleep ${SLEEP_INTERVAL}
 
 	# Reset our variable for checking whether or not changes were found.
 	CHANGES_FOUND=""
@@ -79,4 +77,7 @@ while true; do
 		git push ${GIT_ORIGIN} ${GIT_BRANCH}
 	fi
 	git pull --rebase
+	
+	# Sleep for the given interval.
+	sleep ${SLEEP_INTERVAL}
 done
