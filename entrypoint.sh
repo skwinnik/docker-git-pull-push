@@ -78,4 +78,5 @@ while true; do
 		git pull --rebase
 		git push ${GIT_ORIGIN} ${GIT_BRANCH}
 	fi
+	git pull --rebase
 done
