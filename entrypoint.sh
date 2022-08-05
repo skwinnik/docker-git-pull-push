@@ -55,6 +55,7 @@ while true; do
 		
 		#safely pull if no changes
 		git pull --rebase
+		#chmod -R 777 .
 		continue
 	fi
 
