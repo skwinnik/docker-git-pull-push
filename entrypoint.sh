@@ -57,7 +57,7 @@ while true; do
 		
 		#safely pull if no changes
 		git pull --rebase
-		#chmod -R 777 .
+		chmod -R 777 .
 		continue
 	fi
 
@@ -84,6 +84,7 @@ while true; do
 		
 		#pull after commit
 		git pull --rebase
+		chmod -R 775 .
 		git push ${GIT_ORIGIN} ${GIT_BRANCH}
 	fi
 done
