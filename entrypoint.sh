@@ -30,6 +30,7 @@ fi
 if [ ! -d "${WORKING_DIR}/.git" ]; then
 	echo "Git repository not found. Initializing repository."
 	git init 
+	git config --global init.defaultBranch main
 	git remote add ${GIT_ORIGIN} ${GIT_REPO}
 	git fetch
 	git checkout -t ${GIT_ORIGIN}/${GIT_BRANCH}
